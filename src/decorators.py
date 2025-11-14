@@ -1,5 +1,5 @@
 import functools
-from typing import Any, Callable, Optional, TypeVar, cast
+from typing import Callable, Any, Optional, TypeVar, cast
 
 # Тип для функций
 F = TypeVar('F', bound=Callable[..., Any])
@@ -9,13 +9,33 @@ def log(filename: Optional[str] = None) -> Callable[[F], F]:
     """
     Декоратор для логирования вызовов функций.
 
+    Логирует успешные выполнения функций и ошибки. Может выводить логи
+    в консоль или записывать в файл.
+
     Args:
-        filename: Имя файла для логирования. Если None - вывод в консоль.
+        filename (Optional[str]): Имя файла для записи логов.
+                                Если None - логи выводятся в консоль.
 
     Returns:
-        Декорированную функцию с логированием.
-    """
+        Callable: Декорированную функцию с добавленным логированием.
 
+    Examples:
+        >>> @log()
+        ... def add(a, b):
+        ...     return a + b
+        >>> add(1, 2)
+        add ok
+
+        >>> @log(filename="app.log")
+        ... def divide(a, b):
+        ...     return a / b
+        >>> divide(1, 0)
+        divide error: ZeroDivisionError. Inputs: (1, 0), {}
+
+    Notes:
+        - При успешном выполнении логируется: "имя_функции ok"
+        - При ошибке логируется: "имя_функции error: тип_ошибки. Inputs: args, kwargs"
+    """
     def decorator(func: F) -> F:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
