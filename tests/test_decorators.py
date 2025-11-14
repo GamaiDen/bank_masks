@@ -132,4 +132,3 @@ def test_multiple_calls_to_same_function(capsys):
 
     assert len(lines) == 3
     assert all("increment ok" in line for line in lines)
-
