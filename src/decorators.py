@@ -2,16 +2,16 @@
 Модуль с декораторами для логирования.
 """
 from functools import wraps
-from typing import Any, Callable
+from typing import Any, Callable, Optional
 
 
-def log(filename: str = None) -> Callable:
+def log(filename: Optional[str] = None) -> Callable:
     """
     Декоратор для логирования вызовов функций.
 
     Аргументы:
-        filename (str, optional): Путь к файлу для записи логов.
-                                 Если не указан, логи выводятся в консоль.
+        filename (Optional[str], optional): Путь к файлу для записи логов.
+                                            Если не указан, логи выводятся в консоль.
 
     Возвращает:
         Callable: Декорированная функция.
