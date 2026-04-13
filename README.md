@@ -74,3 +74,25 @@ cd bank_masks
 - 10/10 тестов проходят успешно
 - 100% покрытие кода
 - HTML отчет покрытия: htmlcov/index.html
+## 📊 Работа с CSV и Excel файлами
+
+Проект поддерживает чтение финансовых транзакций из CSV и Excel файлов.
+
+### Функции
+
+#### `read_transactions_from_csv(file_path: str) -> List[Dict[str, Any]]`
+Читает транзакции из CSV файла.
+
+**Параметры:**
+- `file_path` (str) - путь к CSV файлу
+
+**Возвращает:**
+- Список словарей с транзакциями
+- При ошибке возвращает пустой список
+
+**Пример:**
+```python
+from src.file_reader import read_transactions_from_csv
+
+transactions = read_transactions_from_csv("data/transactions.csv")
+print(transactions)
