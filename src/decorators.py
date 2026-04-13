@@ -1,47 +1,68 @@
-"""
-Модуль с декораторами для логирования.
-"""
-from functools import wraps
-from typing import Any, Callable, Optional
+import functools
+from typing import Callable, Any, Optional, TypeVar, cast
+
+# Тип для функций
+F = TypeVar('F', bound=Callable[..., Any])
 
 
-def log(filename: Optional[str] = None) -> Callable:
+def log(filename: Optional[str] = None) -> Callable[[F], F]:
     """
     Декоратор для логирования вызовов функций.
 
-    Аргументы:
-        filename (Optional[str], optional): Путь к файлу для записи логов.
-                                            Если не указан, логи выводятся в консоль.
+    Логирует успешные выполнения функций и ошибки. Может выводить логи
+    в консоль или записывать в файл.
 
-    Возвращает:
-        Callable: Декорированная функция.
+    Args:
+        filename (Optional[str]): Имя файла для записи логов.
+                                Если None - логи выводятся в консоль.
+
+    Returns:
+        Callable: Декорированную функцию с добавленным логированием.
+
+    Examples:
+        >>> @log()
+        ... def add(a, b):
+        ...     return a + b
+        >>> add(1, 2)
+        add ok
+
+        >>> @log(filename="app.log")
+        ... def divide(a, b):
+        ...     return a / b
+        >>> divide(1, 0)
+        divide error: ZeroDivisionError. Inputs: (1, 0), {}
+
+    Notes:
+        - При успешном выполнении логируется: "имя_функции ok"
+        - При ошибке логируется: "имя_функции error: тип_ошибки. Inputs: args, kwargs"
     """
-
-    def decorator(func: Callable) -> Callable:
-        @wraps(func)
+    def decorator(func: F) -> F:
+        @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
-                log_message = f"{func.__name__} ok"
+                # Успешное выполнение
+                log_message = f"{func.__name__} ok\n"
+
                 if filename:
-                    with open(filename, "a", encoding="utf-8") as log_file:
-                        log_file.write(log_message + "\n")
+                    with open(filename, 'a', encoding='utf-8') as f:
+                        f.write(log_message)
                 else:
-                    print(log_message)
+                    print(log_message, end='')
+
                 return result
+
             except Exception as e:
-                error_msg = f"{type(e).__name__}"
-                log_message = (
-                    f"{func.__name__} error: {error_msg}. "
-                    f"Inputs: {args}, {kwargs}"
-                )
+                # Ошибка выполнения
+                error_message = f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}\n"
+
                 if filename:
-                    with open(filename, "a", encoding="utf-8") as log_file:
-                        log_file.write(log_message + "\n")
+                    with open(filename, 'a', encoding='utf-8') as f:
+                        f.write(error_message)
                 else:
-                    print(log_message)
+                    print(error_message, end='')
+
                 raise e
 
-        return wrapper
-
+        return cast(F, wrapper)
     return decorator
