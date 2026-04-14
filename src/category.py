@@ -3,6 +3,7 @@
 """
 
 from typing import List, Optional
+
 from src.product import Product
 
 
