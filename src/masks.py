@@ -30,12 +30,9 @@ def get_mask_card_number(card_number) -> str:
     # Извлекаем только цифры
     digits = re.sub(r'\D', '', card_str)
 
-    # Формируем сообщение для отладки
     preview = f"{digits[:4]}******{digits[-4:] if len(digits) > 4 else ''}"
-    debug_msg = f"Маскировка номера карты: {preview}"
-    logger.debug(debug_msg)
+    logger.debug(f"Маскировка номера карты: {preview}")
 
-    # Если цифр меньше 16, возвращаем исходную строку (по ТЗ)
     if len(digits) != 16:
         logger.error(f"Номер карты должен содержать 16 цифр. Получено: {len(digits)}")
         return card_str
@@ -59,10 +56,7 @@ def get_mask_account(account_number) -> str:
     Возвращает:
         str: Замаскированный номер счета в формате **XXXX
     """
-    # Преобразуем в строку
     account_str = str(account_number)
-
-    # Извлекаем только цифры
     digits = re.sub(r'\D', '', account_str)
 
     logger.debug(f"Маскировка номера счета: {account_str}")

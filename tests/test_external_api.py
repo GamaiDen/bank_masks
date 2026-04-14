@@ -1,7 +1,6 @@
 """
 Тесты для модуля external_api.
 """
-import pytest
 from unittest.mock import patch, Mock
 from src.external_api import convert_to_rub
 
@@ -59,16 +58,13 @@ def test_convert_to_rub_usd_success(mock_get):
 def test_convert_to_rub_api_error(mock_get):
     """Тест: ошибка API - возвращаем 0.0"""
     with patch("src.external_api.API_KEY", "test_api_key"):
-        # Мокаем requests.get, чтобы он выбрасывал исключение
         mock_get.side_effect = Exception("API unavailable")
-
         transaction = {
             "operationAmount": {
                 "amount": "50.00",
                 "currency": {"code": "EUR"}
             }
         }
-        # Функция должна поймать исключение и вернуть 0.0
         result = convert_to_rub(transaction)
         assert result == 0.0
 

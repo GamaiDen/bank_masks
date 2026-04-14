@@ -2,8 +2,6 @@
 Тесты для модуля utils.
 """
 import json
-import pytest
-from pathlib import Path
 from src.utils import get_transactions_from_json
 
 

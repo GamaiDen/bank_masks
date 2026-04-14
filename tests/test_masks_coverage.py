@@ -1,7 +1,6 @@
 """
 Дополнительные тесты для повышения покрытия masks.py.
 """
-import pytest
 from src.masks import get_mask_card_number, get_mask_account
 
 
@@ -18,9 +17,8 @@ def test_mask_card_number_too_short():
 
 
 def test_mask_card_number_with_letters():
-    """Тест: номер карты с буквами - возвращаем исходную строку (невалидный формат)"""
+    """Тест: номер карты с буквами - возвращаем исходную строку"""
     result = get_mask_card_number("7000abcd89606361")
-    # По ТЗ, если не 16 цифр, возвращаем исходную строку
     assert result == "7000abcd89606361"
 
 
