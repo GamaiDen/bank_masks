@@ -1,8 +1,9 @@
 """
 Модуль для чтения финансовых транзакций из CSV и Excel файлов.
 """
+from typing import Any, Dict, List
+
 import pandas as pd
-from typing import List, Dict, Any
 
 
 def read_transactions_from_csv(file_path: str) -> List[Dict[str, Any]]:

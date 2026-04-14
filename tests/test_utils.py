@@ -2,6 +2,7 @@
 Тесты для модуля utils.
 """
 import json
+
 from src.utils import get_transactions_from_json
 
 
