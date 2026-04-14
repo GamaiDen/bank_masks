@@ -2,6 +2,7 @@
 Тесты для проверки логирования в модуле utils.
 """
 from unittest.mock import patch
+
 from src.utils import get_transactions_from_json
 
 
