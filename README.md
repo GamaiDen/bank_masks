@@ -74,3 +74,15 @@ cd bank_masks
 - 10/10 тестов проходят успешно
 - 100% покрытие кода
 - HTML отчет покрытия: htmlcov/index.html
+
+## Функциональность поиска и категоризации
+
+### Поиск по описанию
+
+```python
+from src.search import search_by_description
+
+transactions = get_transactions_from_json("data/operations.json")
+result = search_by_description(transactions, "перевод")
+# Вернет все транзакции, в описании которых есть слово "перевод"
+

@@ -2,7 +2,7 @@
 Модуль для конвертации валют через внешнее API.
 """
 import os
-from typing import Dict, Any
+from typing import Any, Dict
 
 import requests
 from dotenv import load_dotenv
