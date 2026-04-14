@@ -74,3 +74,18 @@ cd bank_masks
 - 10/10 тестов проходят успешно
 - 100% покрытие кода
 - HTML отчет покрытия: htmlcov/index.html
+
+## ООП: Классы Product и Category
+
+### Класс Product
+
+```python
+from src.product import Product
+
+product = Product(
+    name="Samsung Galaxy S23 Ultra",
+    description="256GB, Серый цвет, 200MP камера",
+    price=180000.0,
+    quantity=5
+)
+
