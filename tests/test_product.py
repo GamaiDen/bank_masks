@@ -2,7 +2,6 @@
 Тесты для класса Product.
 """
 
-import pytest
 from src.product import Product
 
 

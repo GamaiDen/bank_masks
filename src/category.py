@@ -2,7 +2,7 @@
 Модуль для работы с категориями товаров.
 """
 
-from typing import List
+from typing import List, Optional
 
 from src.product import Product
 
@@ -28,7 +28,7 @@ class Category:
     description: str
     __products: List[Product]
 
-    def __init__(self, name: str, description: str, products: List[Product] = None) -> None:
+    def __init__(self, name: str, description: str, products: Optional[List[Product]] = None) -> None:
         """
         Инициализация объекта Category.
 
