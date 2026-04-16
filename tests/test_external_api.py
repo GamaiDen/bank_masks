@@ -1,8 +1,8 @@
 """
 Тесты для модуля external_api.
 """
-import pytest
-from unittest.mock import patch, Mock
+from unittest.mock import Mock, patch
+
 from src.external_api import convert_to_rub
 
 

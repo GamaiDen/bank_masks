@@ -1,9 +1,10 @@
 """
 Тесты для модуля file_reader.
 """
-import pytest
-from unittest.mock import patch, Mock
-from src.file_reader import read_transactions_from_csv, read_transactions_from_excel
+from unittest.mock import Mock, patch
+
+from src.file_reader import (read_transactions_from_csv,
+                             read_transactions_from_excel)
 
 
 def test_read_transactions_from_csv_success():
