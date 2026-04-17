@@ -66,3 +66,9 @@ def test_category_count_increment():
 def test_category_repr(sample_category):
     """Тест строкового представления категории."""
     assert repr(sample_category) == "Category(name='Test Category', products_count=2)"
+
+
+def test_category_str(sample_category):
+    """Тест строкового представления категории."""
+    expected = "Test Category, количество продуктов: 15 шт."  # 10 + 5 из фикстуры
+    assert str(sample_category) == expected

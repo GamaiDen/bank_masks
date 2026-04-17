@@ -1,3 +1,5 @@
+import pytest
+
 """
 Тесты для класса Product.
 """
@@ -71,3 +73,24 @@ def test_product_repr():
     """Тест строкового представления продукта."""
     product = Product("Test", "Desc", 100.0, 2)
     assert repr(product) == "Product(name='Test', price=100.0, quantity=2)"
+
+
+def test_product_str():
+    """Тест строкового представления продукта."""
+    product = Product("Samsung", "Phone", 80000.0, 3)
+    assert str(product) == "Samsung, 80000.0 руб. Остаток: 3 шт."
+
+
+def test_product_add():
+    """Тест магического метода сложения продуктов."""
+    p1 = Product("Товар 1", "Описание", 100.0, 10)
+    p2 = Product("Товар 2", "Описание", 200.0, 2)
+    result = p1 + p2
+    assert result == 1400.0  # 100*10 + 200*2
+
+
+def test_product_add_type_error():
+    """Тест ошибки при сложении с не-продуктом."""
+    p1 = Product("Товар", "Описание", 100.0, 1)
+    with pytest.raises(TypeError):
+        _ = p1 + "не продукт"

@@ -67,7 +67,7 @@ class Category:
 
         result = ""
         for product in self.__products:
-            result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            result += str(product) + "\n"
         return result
 
     def get_products_list(self) -> List[Product]:
@@ -79,6 +79,16 @@ class Category:
         """
         return self.__products
 
+    def __str__(self) -> str:
+        """
+        Строковое представление категории.
+
+        Возвращает:
+            str: Строка в формате "Название категории, количество продуктов: X шт."
+        """
+        total_quantity = sum(p.quantity for p in self.__products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
+
     def __repr__(self) -> str:
-        """Строковое представление категории."""
+        """Строковое представление категории для отладки."""
         return f"Category(name='{self.name}', products_count={len(self.__products)})"

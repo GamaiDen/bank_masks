@@ -75,6 +75,29 @@ class Product:
         else:
             self.__price = new_price
 
+    def __str__(self) -> str:
+        """
+        Строковое представление продукта.
+
+        Возвращает:
+            str: Строка в формате "Название, X руб. Остаток: X шт."
+        """
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: "Product") -> float:
+        """
+        Магический метод сложения двух продуктов.
+
+        Аргументы:
+            other (Product): Другой продукт.
+
+        Возвращает:
+            float: Сумма произведений цены на количество для двух продуктов.
+        """
+        if not isinstance(other, Product):
+            raise TypeError("Складывать можно только объекты класса Product")
+        return self.__price * self.quantity + other.__price * other.quantity
+
     def __repr__(self) -> str:
-        """Строковое представление продукта."""
+        """Строковое представление продукта для отладки."""
         return f"Product(name='{self.name}', price={self.__price}, quantity={self.quantity})"
