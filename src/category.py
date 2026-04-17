@@ -51,6 +51,8 @@ class Category:
         Аргументы:
             product (Product): Объект продукта для добавления.
         """
+        if not issubclass(type(product), Product):
+            raise TypeError("В категорию можно добавлять только объекты Product или его наследников")
         self.__products.append(product)
         Category.product_count += 1
 

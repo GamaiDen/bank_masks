@@ -101,3 +101,76 @@ class Product:
     def __repr__(self) -> str:
         """Строковое представление продукта для отладки."""
         return f"Product(name='{self.name}', price={self.__price}, quantity={self.quantity})"
+
+
+class Smartphone(Product):
+    """
+    Класс для представления смартфона, наследник Product.
+
+    Дополнительные атрибуты:
+        efficiency (float): Производительность.
+        model (str): Модель.
+        memory (int): Объем встроенной памяти.
+        color (str): Цвет.
+    """
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        efficiency: float,
+        model: str,
+        memory: int,
+        color: str,
+    ) -> None:
+        """Инициализация объекта Smartphone."""
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+    def __add__(self, other: "Product") -> float:
+        """
+        Сложение смартфонов. Разрешено только с объектами Smartphone.
+        """
+        if type(other) is not Smartphone:
+            raise TypeError("Складывать можно только объекты класса Smartphone")
+        return super().__add__(other)
+
+
+class LawnGrass(Product):
+    """
+    Класс для представления газонной травы, наследник Product.
+
+    Дополнительные атрибуты:
+        country (str): Страна-производитель.
+        germination_period (int): Срок прорастания (дней).
+        color (str): Цвет.
+    """
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: int,
+        color: str,
+    ) -> None:
+        """Инициализация объекта LawnGrass."""
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+    def __add__(self, other: "Product") -> float:
+        """
+        Сложение газонной травы. Разрешено только с объектами LawnGrass.
+        """
+        if type(other) is not LawnGrass:
+            raise TypeError("Складывать можно только объекты класса LawnGrass")
+        return super().__add__(other)
