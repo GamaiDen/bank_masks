@@ -3,8 +3,8 @@
 """
 
 import pytest
-from src.category import Category
-from src.product import Product
+from src.oop.category import Category
+from src.oop.product import Product
 
 
 @pytest.fixture

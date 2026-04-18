@@ -4,7 +4,7 @@
 
 from typing import List, Optional
 
-from src.product import Product
+from src.oop.product import Product
 
 
 class Category:

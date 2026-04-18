@@ -1,5 +1,5 @@
 import pytest
-from src.product import LawnGrass, Product, Smartphone
+from src.oop.product import LawnGrass, Product, Smartphone
 
 
 """
