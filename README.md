@@ -113,3 +113,27 @@ transactions = read_transactions_from_excel("data/transactions_excel.xlsx")
 ### Требования
 - `pandas`
 - `openpyxl`
+
+## ООП: Наследование (пакет src/oop)
+
+### Классы-наследники Product
+
+**Smartphone** — дополнительные атрибуты:
+- `efficiency` — производительность
+- `model` — модель
+- `memory` — объем встроенной памяти
+- `color` — цвет
+
+**LawnGrass** — дополнительные атрибуты:
+- `country` — страна-производитель
+- `germination_period` — срок прорастания (дней)
+- `color` — цвет
+
+### Ограничения
+- Сложение (`__add__`) разрешено только для объектов одного класса (TypeError при разных)
+- Метод `add_product()` принимает только объекты Product или его наследников
+
+### Тесты
+```bash
+poetry run pytest tests/oop_test_*.py -v
+
