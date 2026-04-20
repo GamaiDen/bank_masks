@@ -1,4 +1,5 @@
 from src.oop.base_product import BaseProduct
+
 """
 Модуль для работы с продуктами.
 """

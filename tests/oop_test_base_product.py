@@ -3,6 +3,7 @@
 """
 
 import pytest
+
 from src.oop.base_product import BaseProduct
 from src.oop.product import Product
 
