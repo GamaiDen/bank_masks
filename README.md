@@ -74,3 +74,58 @@ cd bank_masks
 - 10/10 тестов проходят успешно
 - 100% покрытие кода
 - HTML отчет покрытия: htmlcov/index.html
+
+## 📊 Работа с CSV и Excel файлами
+
+### Функции
+
+#### `read_transactions_from_csv(file_path: str) -> List[Dict[str, Any]]`
+Читает транзакции из CSV файла.
+
+**Пример:**
+```python
+from src.file_reader import read_transactions_from_csv
+transactions = read_transactions_from_csv("data/transactions.csv")
+
+
+## 📊 Работа с CSV и Excel файлами
+
+### Функции
+
+#### `read_transactions_from_csv(file_path: str) -> List[Dict[str, Any]]`
+Читает транзакции из CSV файла.
+
+**Пример:**
+```python
+from src.file_reader import read_transactions_from_csv
+transactions = read_transactions_from_csv("data/transactions.csv")
+```
+
+#### `read_transactions_from_excel(file_path: str) -> List[Dict[str, Any]]`
+Читает транзакции из Excel файла (.xlsx).
+
+**Пример:**
+```python
+from src.file_reader import read_transactions_from_excel
+transactions = read_transactions_from_excel("data/transactions_excel.xlsx")
+```
+
+### Требования
+- `pandas`
+- `openpyxl`
+
+## Домашняя работа: Исключения
+
+### Реализовано
+
+**1. Валидация количества в Product**
+- При создании продукта с `quantity <= 0` выбрасывается `ValueError` с сообщением:
+  `"Товар с нулевым количеством не может быть добавлен"`
+
+**2. Метод `average_price()` в Category**
+- Рассчитывает среднюю цену товаров в категории
+- Если категория пуста — возвращает `0.0` (обработка `ZeroDivisionError`)
+
+### Тестирование
+- Всего тестов OOP: 26
+- Покрытие кода: 80%

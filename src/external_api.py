@@ -2,7 +2,11 @@
 Модуль для конвертации валют через внешнее API.
 """
 import os
+<<<<<<< HEAD
 from typing import Dict, Any
+=======
+from typing import Any, Dict
+>>>>>>> a0698861399be6f9e192f762298ffe8731c117df
 
 import requests
 from dotenv import load_dotenv
