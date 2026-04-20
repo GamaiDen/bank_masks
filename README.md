@@ -113,3 +113,49 @@ transactions = read_transactions_from_excel("data/transactions_excel.xlsx")
 ### Требования
 - `pandas`
 - `openpyxl`
+<<<<<<< HEAD
+=======
+
+## ООП: Наследование (пакет src/oop)
+
+### Классы-наследники Product
+
+**Smartphone** — дополнительные атрибуты:
+- `efficiency` — производительность
+- `model` — модель
+- `memory` — объем встроенной памяти
+- `color` — цвет
+
+**LawnGrass** — дополнительные атрибуты:
+- `country` — страна-производитель
+- `germination_period` — срок прорастания (дней)
+- `color` — цвет
+
+### Ограничения
+- Сложение (`__add__`) разрешено только для объектов одного класса (TypeError при разных)
+- Метод `add_product()` принимает только объекты Product или его наследников
+
+### Тесты
+```bash
+poetry run pytest tests/oop_test_*.py -v
+
+## Домашняя работа: Наследование (Smartphone и LawnGrass)
+
+### Реализованные классы
+
+**1. Smartphone (наследник Product)**
+- Дополнительные атрибуты: `efficiency`, `model`, `memory`, `color`
+- Переопределённый `__add__`: разрешает складывать только с объектами `Smartphone`
+
+**2. LawnGrass (наследник Product)**
+- Дополнительные атрибуты: `country`, `germination_period`, `color`
+- Переопределённый `__add__`: разрешает складывать только с объектами `LawnGrass`
+
+**3. Усиленная защита в Category**
+- Метод `add_product()` проверяет, что добавляемый объект является наследником `Product` (`issubclass`)
+
+### Тестирование
+- Всего тестов: 22
+- Покрытие кода: 98%
+- Отчёт о покрытии: `htmlcov/index.html`
+>>>>>>> 461db99 (docs: update README with inheritance homework description)
