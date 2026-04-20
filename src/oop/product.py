@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+from src.oop.base_product import BaseProduct
+
+>>>>>>> 867fa72 (style: fix isort and flake8 issues)
 """
 Модуль для работы с продуктами.
 """

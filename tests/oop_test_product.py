@@ -1,6 +1,6 @@
 import pytest
-from src.oop.product import LawnGrass, Product, Smartphone
 
+from src.oop.product import LawnGrass, Product, Smartphone
 
 """
 Тесты для класса Product.
