@@ -137,3 +137,22 @@ transactions = read_transactions_from_excel("data/transactions_excel.xlsx")
 ```bash
 poetry run pytest tests/oop_test_*.py -v
 
+## Домашняя работа: Наследование (Smartphone и LawnGrass)
+
+### Реализованные классы
+
+**1. Smartphone (наследник Product)**
+- Дополнительные атрибуты: `efficiency`, `model`, `memory`, `color`
+- Переопределённый `__add__`: разрешает складывать только с объектами `Smartphone`
+
+**2. LawnGrass (наследник Product)**
+- Дополнительные атрибуты: `country`, `germination_period`, `color`
+- Переопределённый `__add__`: разрешает складывать только с объектами `LawnGrass`
+
+**3. Усиленная защита в Category**
+- Метод `add_product()` проверяет, что добавляемый объект является наследником `Product` (`issubclass`)
+
+### Тестирование
+- Всего тестов: 22
+- Покрытие кода: 98%
+- Отчёт о покрытии: `htmlcov/index.html`
